@@ -76,8 +76,37 @@ int main() {
 				}
 			}
 		}else if (menuOption == 8){ // List all Triangles
-
+			cout << "Only Triangles" << endl;
+			for (Shape* shape: shapes){
+				if (dynamic_cast<Triangle*>(shape) != nullptr) {
+					Triangle* triangle = dynamic_cast<Triangle*>(shape);
+					cout << shape->ToString() << endl;
+					cout << "\tPerimeter:    " << shape->Perimeter() << endl;
+					cout << "\tArea:         " << shape->Area() << endl;
+					cout << "\tAngles (degrees): " << triangle->AngleAB() << "°, " 
+											  << triangle->AngleBC() << "°, " 
+											  << triangle->AngleAC() << "°" << endl;
+					cout << endl;
+				}
+			}
 		}else if (menuOption == 9){ // List all Rectangles
+			cout << "Only Rectangles" << endl;
+			for (Shape* shape: shapes){
+				Rectangle* rect = dynamic_cast<Rectangle*>(shape);
+				if (rect != nullptr) {
+					cout << shape->ToString() << endl;
+					cout << "\tPerimeter:    " << shape->Perimeter() << endl;
+					cout << "\tArea:         " << shape->Area() << endl;
+					// Check if it's a square (special case of rectangle)
+					Square* square = dynamic_cast<Square*>(shape);
+					if (square) {
+						cout << "\tType:         Square" << endl;
+					} else {
+						cout << "\tType:         Rectangle" << endl;
+					}
+					cout << endl;
+				}
+			}
 
 		}else if (menuOption == 10){ // List all shapes
 			for (Shape* shape: shapes){
